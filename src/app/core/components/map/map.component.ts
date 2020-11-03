@@ -69,7 +69,7 @@ export class MapComponent implements OnInit, OnChanges {
     @Input()
     lng: string;
     @Input()
-    height = 1000;
+    height = 100;
     @Input()
     title: string;
 
@@ -99,7 +99,6 @@ export class MapComponent implements OnInit, OnChanges {
     ngOnInit() {}
 
     ngOnChanges(changes: SimpleChanges) {
-        debugger;
         if (
             !(
                 changes.lat &&
@@ -147,8 +146,6 @@ export class MapComponent implements OnInit, OnChanges {
                     },
                     {}
                 );
-
-                this.setUpLocations();
             }
         });
     }
@@ -341,26 +338,31 @@ export class MapComponent implements OnInit, OnChanges {
 
         const geocoder = new this.google.maps.Geocoder();
 
-        geocoder.geocode({ address: 'Curitiba, PR' }, (results, status) => {
+        geocoder.geocode({ address: this._related[0].related_objects[0].address }, (results, status) => {
             if (status == this.google.maps.GeocoderStatus.OK) {
                 lat = results[0].geometry.location.lat();
                 lng = results[0].geometry.location.lng();
+
+                this.map = new this.google.maps.Map(this.gmap.nativeElement, {
+                    center: new this.google.maps.LatLng(lat, lng),
+                    zoom: 14,
+                    styles: styledMapType,
+                    mapTypeControl: true,
+                    mapTypeControlOptions: {
+                        style: this.google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    },
+                });
+
+                this._related[0].related_objects[0].lat = lat;
+                this._related[0].related_objects[0].lng = lng;
+
+                this.setUpLocations();
+
             } else {
                 alert(
-                    'You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started" ' +
-                        status
+                   `Ocorreu um erro: ${status}`
                 );
             }
-        });
-
-        this.map = new this.google.maps.Map(this.gmap.nativeElement, {
-            center: new this.google.maps.LatLng(lat, lng),
-            zoom: 14,
-            styles: styledMapType,
-            mapTypeControl: true,
-            mapTypeControlOptions: {
-                style: this.google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-            },
         });
     }
 
@@ -382,7 +384,8 @@ export class MapComponent implements OnInit, OnChanges {
             label: {
                 text: location.title,
                 fontSize: '1.6rem',
-                fontWeight: '400',
+                fontWeight: 'bold',
+                color: '#646770',
                 fontFamily: `'PlantinMTPro', 'Times New Roman', 'Times', 'Baskerville', 'Georgia', serif`,
             },
             map: this.map,

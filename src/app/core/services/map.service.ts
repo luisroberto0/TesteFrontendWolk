@@ -5,7 +5,7 @@ import { Loader } from 'google-maps';
     providedIn: 'root',
 })
 export class MapsService {
-    clientKey = 'AIzaSyCpzCIhX7FZxD38O2LKMVxoQrixauhTttU';
+    clientKey = 'AIzaSyBj_a4fha9f1CtqfTfQYKUmEFfXF21UaFU';
     googleMaps;
     loader: Loader;
 

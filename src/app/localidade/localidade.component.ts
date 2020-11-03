@@ -100,5 +100,24 @@ export class LocalidadeComponent implements OnInit {
     }
 
     clickEventHandler(item: any) {
+        this.related = [
+            {
+                name: 'default',
+                related_objects: [
+                    {
+                        id: 801,
+                        type: 'Nightlife',
+                        type_slug: 'nightlife',
+                        title: item.nome,
+                        description: 'Parei no teste por aqui, pois precisava habilitar faturamento do google maps para usar geocode',
+                        lng: -49.2733,
+                        lat: -25.4284,
+                        address: `${item.nome}, ${item.mesorregiao.UF.sigla}`,
+                        content_type: 'place',
+                        alias: '',
+                    },
+                ],
+            },
+        ];
     }
 }
