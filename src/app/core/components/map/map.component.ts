@@ -24,15 +24,7 @@ interface ILocation {
     address?: string;
     content_type?: string;
     alias?: string;
-    weather?: {
-        temp_max: number;
-        temp_min: number;
-        dir_vento: string;
-        int_vento: string;
-        cod_icone: string;
-        entidade: string;
-        resumo: string;
-    };
+    weather?: any;
 }
 
 interface IRelated {
@@ -366,6 +358,10 @@ export class MapComponent implements OnInit, OnChanges {
         });
     }
 
+    /**
+     * cria icone da localização e marca no mapa
+     * @param location: ILocation
+     */
     setupMarker(location: ILocation) {
         const svgIcon = {
             path:
@@ -397,16 +393,101 @@ export class MapComponent implements OnInit, OnChanges {
         return mrkr;
     }
 
+    /**
+     * adiciona as informações da previsão do tempo em um balão
+     * @param location: ILocation
+     * @param marker: google.maps.Marker
+     */
     setUpInfoWindow(location: ILocation, marker: google.maps.Marker) {
+        const data = Object.keys(location.weather);
         const infowindow = new google.maps.InfoWindow({
             content: `
             <div class="info_window_container">
-              <h4>${location.title}</h4>
 
-              ${location.description}
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>${location.title}</h4>
+                    </div>
+                </div>
 
-              <h5>Clima tempo:</h5>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>${location.description}</h4>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Previsão do Tempo:</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                    ${data[0]}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Temperatura Mínima</label> <span style="color: blue">${location.weather[data[0]].manha.temp_max}°C</span>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Temperatura Mínima</label> <span style="color: red">${location.weather[data[0]].manha.temp_min}°C</span>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Umidade Máxima</label> <span style="color: red">${location.weather[data[0]].manha.umidade_max}%</span>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Umidade Mínima</label> <span style="color: red">${location.weather[data[0]].manha.umidade_min}%</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        Manhã
+                    </div>
+                    <div class="col-md-4">
+                        Tarde
+                    </div>
+                    <div class="col-md-4">
+                        Noite
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src=" ${location.weather[data[0]].manha.icone}" />
+                    </div>
+                    <div class="col-md-4">
+                        <img src=" ${location.weather[data[0]].tarde.icone}" />
+                    </div>
+                    <div class="col-md-4">
+                        <img src=" ${location.weather[data[0]].noite.icone}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        :: ${location.weather[data[0]].manha.resumo}
+                    </div>
+                    <div class="col-md-4">
+                        :: ${location.weather[data[0]].tarde.resumo}
+                    </div>
+                    <div class="col-md-4">
+                        :: ${location.weather[data[0]].noite.resumo}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        Direção do Vento: ${location.weather[data[0]].manha.dir_vento}
+                        Intensidade do Vento: ${location.weather[data[0]].manha.int_vento}
+                    </div>
+                    <div class="col-md-4">
+                        Direção do Vento: ${location.weather[data[0]].tarde.dir_vento}
+                        Intensidade do Vento: ${location.weather[data[0]].tarde.int_vento}
+                    </div>
+                    <div class="col-md-4">
+                        Direção do Vento: ${location.weather[data[0]].noite.dir_vento}
+                        Intensidade do Vento: ${location.weather[data[0]].noite.int_vento}
+                    </div>
+                </div>
               <p></p>
             </div>
           `,
@@ -430,6 +511,7 @@ export class MapComponent implements OnInit, OnChanges {
         return infowindow;
     }
 
+    // seta a localização no mapa
     setUpLocations() {
         Object.keys(this.relatedMap).forEach((key) => {
             const locations = this.relatedMap[key].locations;

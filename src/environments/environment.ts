@@ -5,6 +5,7 @@
 export const environment = {
     production: false,
     IBGE_API_URL: 'https://servicodados.ibge.gov.br/api/v1',
+    INMET_API_URL: 'https://apiprevmet3.inmet.gov.br'
 };
 
 /*

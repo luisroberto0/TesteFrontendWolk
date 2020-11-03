@@ -18,4 +18,12 @@ export class LocalidadeService extends BaseService {
             path: `/estados/${idState}/microrregioes`,
         });
     }
+
+    public getCountyByIdMicroregions(idMicroregions: number) {
+        return this.buildResource({
+            method: RequestMethod.Get,
+            path: `/microrregioes/${idMicroregions}/municipios`,
+        });
+    }
+
 }

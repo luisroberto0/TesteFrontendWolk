@@ -7,6 +7,7 @@
       "severity": "warning"
     },
     "variable-name": false,
+    "object-literal-shorthand": false,
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
