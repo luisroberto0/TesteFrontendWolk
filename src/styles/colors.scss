@@ -1,0 +1,52 @@
+//Variáveis de cores do métrics
+$mt-primary: #219653;
+$mt-secondary: #7b12b0;
+$mt-success: #09ba94;
+$mt-danger: #a31200;
+$mt-warning: #f0a20c;
+$mt-info: #09a6b0;
+$mt-dark: #183b3d;
+$mt-white: #f6f6f4;
+
+//Sobrescreve variáveis do web-extensions
+$primary: $mt-primary;
+$secondary: $mt-secondary;
+$tertiary: $mt-dark;
+$success: $mt-success;
+$info: $mt-info;
+$warning: $mt-warning;
+$danger: $mt-danger;
+$dark: $mt-dark;
+
+//Classes de cores do métrics
+.mt-primary {
+    color: $mt-primary !important ;
+}
+
+.mt-secondary {
+    color: $mt-secondary !important;
+}
+
+.mt-success {
+    color: $mt-success !important;
+}
+
+.mt-danger {
+    color: $mt-danger !important;
+}
+
+.mt-warning {
+    color: $mt-warning !important;
+}
+
+.mt-info {
+    color: $mt-info !important;
+}
+
+.mt-dark {
+    color: $mt-dark !important;
+}
+
+.mt-white {
+    color: $mt-white !important;
+}

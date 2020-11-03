@@ -1,0 +1,16 @@
+<uex-layout>
+    <uex-layout-header>
+        <uex-layout-sidebar-toggler
+            sidebar="left"
+            layout-header-left
+        ></uex-layout-sidebar-toggler>
+        <h2 layout-header-right>{{ title }}</h2>
+    </uex-layout-header>
+    <uex-layout-sidebar side="left">
+        <uex-layout-sidebar-brand
+            style="background-color: #fff"
+            src="assets/logo.jpg"
+        ></uex-layout-sidebar-brand>
+        <uex-layout-nav [items]="nav_items"></uex-layout-nav>
+    </uex-layout-sidebar>
+</uex-layout>

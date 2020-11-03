@@ -1,0 +1,81 @@
+teste
+<uex-template
+    title="Localidades"
+>
+
+    <uex-card>
+        <uex-card-header>
+            <uex-card-title></uex-card-title>
+            <uex-card-subtitle></uex-card-subtitle>
+        </uex-card-header>
+        <uex-card-body>
+            <div class="align-items-start uex-grid-item col-12 col-sm-2 pl-1">
+                <div
+                    class="form-group media has-label ng-pristine ng-valid ng-touched"
+                >
+                    <div class="media-body p-0">
+                        <label title="Cidade" for="input-basic_cidade">
+                            Estados
+                        </label>
+                        <div
+                            class="form-control-highlight media align-content-center p-0"
+                        >
+                            <div
+                                class="media-body p-0"
+                                ng-reflect-ng-switch="false"
+                            >
+                                <ng-multiselect-dropdown
+                                    placeholder="Selecione"
+                                    [data]="statesList"
+                                    [(ngModel)]="selectedStates"
+                                    [settings]="dropdownSettings"
+                                    (onSelect)="getMicroregionsByIdState($event.id)"
+                                >
+                                </ng-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <uex-form [form]="form"></uex-form>
+
+            <uex-grid>
+                <uex-grid-item cols="3">
+                    <div class="list-height">
+                        <uex-list hover clickable>
+                            <uex-list-item
+                                *ngFor="
+                                    let item of filteredItems;
+                                    let i = index
+                                "
+                                (click)="clickEventHandler(item)"
+                            >
+                                <uex-icon
+                                    name="check_circle"
+                                    size="3x"
+                                    list-item-left
+                                ></uex-icon>
+                                <uex-list-title
+                                    >{{ item.nome }} -
+                                    {{
+                                        item.mesorregiao.UF.nome
+                                    }}</uex-list-title
+                                >
+                                <uex-list-subtitle>{{
+                                    item.mesorregiao.nome
+                                }}</uex-list-subtitle>
+                            </uex-list-item>
+                        </uex-list>
+                    </div>
+                </uex-grid-item>
+
+                <uex-grid-item cols="9">
+                    <div class="text-right list-height border border-warning">
+                        <app-map [(related)]="related">
+                        </app-map>
+                    </div>
+                </uex-grid-item>
+            </uex-grid>
+        </uex-card-body>
+    </uex-card>
+</uex-template>

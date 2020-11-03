@@ -1,0 +1,84 @@
+@import 'colors.scss';
+@import 'buttons.scss';
+
+.form-group label {
+    color: $mt-dark !important;
+}
+
+.text-primary {
+    color: $mt-dark !important;
+}
+
+button.btn-primary {
+    //Todos elementos que não tiverem classe outline e btn-icon
+    :not(.btn-outline) &:not(.btn-icon) {
+        @include btn-primary;
+        &:not(.btn-clear):hover {
+            @include btn-primary-hover;
+        }
+    }
+
+    &.btn-outline,
+    &.btn-icon {
+        @include btn-primary-icon;
+        &:hover {
+            @include btn-primary-outline-hover;
+        }
+    }
+}
+
+button.btn-secondary {
+    //Todos elementos que não tiverem classe outline e btn-icon
+    :not(.btn-outline) &:not(.btn-icon) {
+        @include btn-secondary;
+        &:not(.btn-clear):hover {
+            @include btn-secondary-hover;
+        }
+    }
+
+    &.btn-outline,
+    &.btn-icon {
+        @include btn-secondary-outline;
+        &:hover {
+            @include btn-secondary-outline-hover;
+        }
+    }
+}
+
+// Placeholder - Padrão dos forms
+::placeholder {
+    opacity: 0.5 !important;
+    font-style: italic;
+}
+
+.multiselect-dropdown .dropdown-btn .selected-item {
+    border: 1px solid #495057 !important;
+    margin-right: 4px;
+    background:#272526 !important;
+    padding: 0 5px;
+    color: #fff;
+    border-radius: 2px;
+    float: left;
+}
+
+
+.multiselect-item-checkbox input[type=checkbox]:checked + div:before {
+    -webkit-animation: .2s ease-in borderscale;
+    animation: .2s ease-in borderscale;
+    background: #495057 !important;
+}
+
+.multiselect-item-checkbox input[type=checkbox] + div:before {
+    box-sizing: content-box;
+    content: "";
+    color: #272526 !important;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    margin-top: -9px;
+    border: 2px solid #272526 !important;
+    text-align: center;
+    transition: .4s;
+}

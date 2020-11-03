@@ -1,0 +1,11 @@
+@import 'buttons.scss';
+// Estilo de botões dentro de tabelas
+
+uex-table-button {
+    button &.btn-tertiary {
+        @include btn-tertiary-outline;
+        &:hover {
+            @include btn-tertiary-outline-hover;
+        }
+    }
+}

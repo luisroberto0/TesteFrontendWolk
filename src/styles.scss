@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'styles/form.scss';
+@import 'styles/colors.scss';
+@import 'styles/buttons.scss';
+@import 'styles/tables.scss';
+
+* {
+    font-family: 'Roboto';
+}
+
+p {
+    margin-top: 0 !important;
+    margin-bottom: 0rem !important;
+}
+
+$uex-layout-header-bg: $dark;
+@import '~@uex/web-extensions/styles';
+.uex-dropdown-menu.dropdown-menu p {
+    padding: 9.5px 16px;
+    margin: 0px;
+}
+
+.uex-layout-drawer img.unit_logo {
+    margin: 15px;
+    width: calc(100% - 30px);
+    max-height: 90px;
+}
+
+.uex-layout > .uex-layout-container > .uex-layout-header .navbar {
+    background: #272526 !important;
+
+    .top_container {
+        width: calc(100% - 60px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            height: 46px;
+        }
+    }
+}
+

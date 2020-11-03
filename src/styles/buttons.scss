@@ -1,0 +1,162 @@
+//Mixins
+
+/**
+* Estilo botões primários
+*/
+@mixin mt-btn {
+    padding: 0.95rem 1.6rem !important;
+    font-size: 1.4rem !important;
+    line-height: 1.125 !important;
+    border-radius: 0.3rem !important;
+}
+
+@mixin btn-primary {
+    background-color: #219653 !important;
+    color: #f6f6f4 !important;
+    border-color: #219653 !important;
+}
+
+@mixin btn-primary-hover {
+    background-color: #1ca3a3 !important;
+    border-color: #1ca3a3 !important;
+    color: #f6f6f4 !important;
+}
+
+@mixin btn-primary-outline {
+    color: #219653 !important;
+    background-color: transparent !important;
+    border-color: #219653 !important;
+}
+
+@mixin btn-primary-icon {
+    color: #219653 !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+@mixin btn-primary-outline-hover {
+    color: #f6f6f4 !important;
+    background-color: #219653 !important;
+    border-color: #219653 !important;
+}
+
+/**
+* Botões secundários
+*/
+@mixin btn-secondary-outline {
+    color: #7b12b0 !important;
+    background-color: transparent !important;
+    border-color: #7b12b0 !important;
+}
+
+@mixin btn-secondary-outline-hover {
+    color: #f6f6f4 !important;
+    background-color: #7b12b0 !important;
+    border-color: #7b12b0 !important;
+}
+/**
+* Botões terciários
+*/
+@mixin btn-tertiary {
+    background-color: #183b3d !important;
+    color: #f6f6f4 !important;
+    border-color: #183b3d !important;
+}
+
+@mixin btn-tertiary-hover {
+    background-color: #192e4a !important;
+    border-color: #192e4a !important;
+    color: #f6f6f4 !important;
+}
+
+@mixin btn-tertiary-outline {
+    color: #183b3d !important;
+    background-color: transparent !important;
+    border-color: #183b3d !important;
+}
+
+@mixin btn-tertiary-outline-hover {
+    color: #f6f6f4 !important;
+    background-color: #183b3d !important;
+    border-color: #183b3d !important;
+}
+
+/**
+* Estilo para botão desabilitado
+*/
+.mt-btn-disabled {
+    opacity: 50%;
+    cursor: default;
+}
+
+/**
+* Estilo botões primários
+*/
+
+.mt-btn-primary {
+    @include btn-primary;
+
+    &:not(.disabled):hover {
+        @include btn-primary-hover;
+    }
+}
+
+.mt-btn-outline.primary {
+    @include btn-primary-outline();
+
+    &:not(.disabled):hover {
+        @include btn-primary-outline-hover;
+    }
+}
+
+/**
+* Botões secundários
+*/
+
+@mixin btn-secondary {
+    background-color: #7b12b0 !important;
+    color: #f6f6f4 !important;
+    border-color: #7b12b0 !important;
+}
+
+@mixin btn-secondary-hover {
+    background-color: #bd0977 !important;
+    border-color: #bd0977 !important;
+    color: #f6f6f4 !important;
+}
+
+.mt-btn-secondary {
+    @include btn-secondary;
+
+    &:not(.disabled):hover {
+        @include btn-secondary-hover;
+    }
+}
+
+.mt-btn-outline.secondary {
+    @include btn-secondary-outline;
+
+    &:not(.disabled):hover {
+        @include btn-secondary-outline-hover;
+    }
+}
+
+/**
+* Botões terciários
+*/
+
+.mt-btn-tertiary {
+    @include btn-tertiary;
+
+    &:not(.disabled):hover {
+        @include btn-tertiary-hover;
+    }
+}
+
+.mt-btn-outline.tertiary {
+    @include btn-tertiary-outline();
+
+    &:not(.disabled):hover {
+        @include btn-tertiary-outline-hover();
+    }
+}

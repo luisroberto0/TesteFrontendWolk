@@ -1,0 +1,16 @@
+<div
+    class="map__container"
+    fxLayout.gt-sm="row"
+    fxLayoutGap="2rem"
+    [ngStyle]="{ height: height + 'px' }"
+    fxLayout.lt-md="column"
+    fxLayoutGap.lt-md="0rem"
+    [ngStyle.lt-md]="{ height: 'auto' }"
+>
+    <div
+        #mapContainer
+        id="map"
+        fxFlex.gt-sm="1 1 auto"
+        [fxFlex.lt-md]="'1 1 ' + height + 'px'"
+    ></div>
+</div>
